@@ -1,0 +1,307 @@
+<!DOCTYPE html> <!-- Games page -->
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--[if lt IE 9]>
+	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+<![endif]-->
+<title>Martinbe.st</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+<script src="https://use.fontawesome.com/bcddbd3e22.js"></script>
+<script src="../java/jquery-3.1.1.min.js"></script>
+<script src="../java/jquery-color.js"></script>
+<script src="../assets/js-colorwork.js"></script>
+</head>
+
+<body>
+<header id="header">
+  <a href="#" id="header_logo">
+    <i class="fa fa-grav fa-3x" id="spaceman" aria-hidden="true"></i>
+    <h1 id="h1">Martin<span class="h1o">be</span>.<span class="h1o">st</span></h1>
+  </a>
+  <div class="top-mid-text">Games <i class="fa fa-gamepad fa-2x" aria-hidden="true"></i></div>
+  <!--<span class="searchbox" id="sb"></span>-->
+</header>
+<nav role="navigation">
+  <ul id="nav">
+    <a href="#">
+      <li><i class="fa fa-cubes fa-2x" aria-hidden="true"></i> <br><p>Home</p></li>
+    </a>
+    <a href="#">
+      <li><i class="fa fa-gamepad fa-2x" aria-hidden="true"></i> <br><p>Games</p></li>
+    </a>
+    <a href="#">
+      <li><i class="fa fa-book fa-2x" aria-hidden="true"></i> <br><p>Read</p></li>
+    </a>
+    <a href="#">
+    <li><i class="fa fa-wikipedia-w fa-2x" aria-hidden="true"></i> <br><p>Wiki</p></li>
+    </a>
+    <a href="#">
+    <li><i class="fa fa-random fa-2x" aria-hidden="true"></i> <br><p>Random</p></li>
+    </a>
+  </ul>
+</nav>
+<article>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt deleniti itaque illum consectetur, laboriosam est quaerat pariatur? Minus, porro qui nisi voluptatem consequuntur omnis, aliquam explicabo illo blanditiis odit dolores?</p>
+</article>
+
+
+
+
+<!--
+
+<header id="header">
+	<div class="left-header">
+		<a class="logo" href="#">Martinbe.st</a>
+	</div><!--
+	<div class="mid-header">
+		<h1>Hangman</h1><p>Can't leave him hangin'</p> 
+	</div>
+	<div class="right-header">
+		<button class="btn" id="new_btn">NEW GAME</button>
+	</div>--><!--
+</header>
+<section>
+	<article class="top-mid">
+		<span class="text" id="wotg"><p>Word of the game</p></span>
+	</article>
+	<section class="container">
+		<article class="a-left">
+			<input type="text" class="inp" id="inp" size="14">
+			<button class="btn" id="game_btn">GO</button>
+			<p class="text" id="guesses">Guesses</p>
+			<p id="gp"></p>
+		</article>
+		<article class="a-right"></article>
+	</section>
+		<!--<p>Guess </p>
+		
+	</article>
+	<article class="art2">
+		<span class="text"><p>Life:</p><p id="life"></p></span>
+		<p>Guesses</p><br>
+		<p id="gp"></p>	
+		
+	</article>
+	<article class="art3" id="art3">
+		<span class="text" id="wotg"><p>Word of the game</p></span>
+		<!--<span class="letter" id="l0">0</span>-->
+	
+	
+	
+		<!--<span class="text"><p>Life</p><p id="life"></p></span>
+		<span class="text" id="guesses"><p>Guesses</p></span>
+		<p id="gp"></p>
+		<span class="text" id="wotg"><p>Word of the game</p></span>
+		<span class="letter" id="l0"></span>
+		<span class="letter" id="l1"></span>
+		<span class="letter" id="l2"></span>
+		<span class="letter" id="l3"></span>
+		<span class="letter" id="l4"></span>
+		<button class="btn" id="new_btn">New game</button>
+		<img src="image.gif" alt="">--><!--
+</section>
+<script>	
+(function($, window, document){
+  $(function(){
+  var $btn = $('#game_btn');
+  var $nbtn = $('#new_btn');
+  var $g = $('#inp');
+  $( '#inp').val('').removeAttr('checked').removeAttr('selected').focus();
+  var $lifes = 7;
+  var $life = $('#life');
+  $life.text($lifes);
+  var $word = '';
+  var $letterBox = $('#l0'); // Used?
+  var $rwn;
+  var $i = 0;
+  var $check = false;
+  var $wrongNum = 0;
+  var $guessedWord = '';
+  var $guessedWordLength = 0;
+  var $random = Math.floor((Math.random() * 60) + 1);
+  var $lifeGradient = ['#FF358B', '#FF358B', '#B259A9', '#9966B3', '#4D8BD1', '#01B0F0'];
+
+getWord();
+//init();
+  
+function init(){
+	//$( '#inp').val('').removeAttr('checked').removeAttr('selected');
+	location.reload();
+};  
+function getWord(){
+  $.get("uppsats.txt", function($data){
+		setWord($data);
+  }, "text");
+};
+function setWord($data){
+  $rwn = $data.split('\n');
+  $word = $rwn[$random].toUpperCase().trim();
+  for($i=$word.length-1;$i>-1;$i--){
+	  $('#wotg').after('<span class="letter" id="l'+$i+'"></span>');
+  };
+};
+function letterCheck(){
+	$check = false;
+	if($g.length == 1){
+		for($i=0;$i<$word.length;$i++){
+			if($g == $word[$i]){ // if correct letter
+			$('#l'+$i).text($g);
+			$('#inp').val('').removeAttr('checked').removeAttr('selected');
+			$check = true;
+			$guessedWordLength += 1;
+			winCheck();
+			};
+		};
+	}else if($g == $word){
+		for($i=0;$i<$word.length;$i++){
+		  $('#l'+$i).text($word[$i]).addClass('letterg');
+		};
+		$guessedWordLength = $word.length;
+		$check = true;
+		winCheck();
+	}else if($g.length == 0){
+		winCheck();
+	}else{
+		$check = false;	
+	};
+	if (!$check){
+      wrongLetter();
+    };
+}; 
+function wrongLetter(){
+	$lifes -= 1;
+	$life.text($lifes);
+	$('#gp').append($g + ' ');
+	$('#life').css('color', $lifeGradient[$lifes]);
+	$check = false;
+		if($lifes == 0){
+			$('#gp').text('Game Over. Ordet var ' + $word);
+			$btn.text('Igen?');
+			for($i=0;$i<$word.length;$i++){
+		  	$('#l'+$i).text($word[$i]).addClass('letterg');
+			};
+		}else{
+			$( '#inp').val('').removeAttr('checked').removeAttr('selected').focus();
+	};
+};
+function winCheck(){
+  if($guessedWordLength == $word.length){ 
+    $('#life').text('Rätt svar! Ordet var ' + $word);
+	$btn.text('Igen?');
+    $('#inp').val('').removeAttr('checked').removeAttr('selected');
+  };
+};
+	  
+$(document).bind('keypress', function(e){
+	if(e.keyCode==13){
+		$btn.trigger('click'); // If key Enter, trigger btn
+	};
+});
+$('#inp').bind('keyup blur',function(){ 
+    var node = $(this);
+    node.val(node.val().replace(/[^a-z]/g,'') ); }
+);
+	
+$btn.click(function(){
+	if($lifes == 0 || $btn.text === 'Igen?'){
+		init();
+	}else{
+		$g = $('#inp').val().toUpperCase();
+		if($lifes >= 1){
+			letterCheck();
+		};
+	};
+});
+	  
+$nbtn.click(function(){
+	 init();
+});
+
+/*
+for($i=0;$i<$word.length;$i++){
+		$letterBox.append('<span class="letter" id="l1"></span>');
+	};
+$word = JSON.stringify($word2, null, 4);
+
+for($i=$word.length-3;$i>-1;$i--){
+$('#wotg').after('<span class="letter" id="l'+$i+'">'+$i+'</span>');
+$('<span class="letter" id="l'+$i'">'+$i+'</span>').insertAfter('#l'+$i).parent().find('letter').last();
+$('#l0 span:last').after('<span class="letter" id="l2"></span>');
+};
+$('#wotg').text($word.length -2 + $word);
+
+  
+  
+  
+
+	  
+$('#new_btn').click(function(){
+	 init();
+});
+
+function letterCheck($word){
+	$('#gp').text($word);
+  $check = false;
+  if($g.length == 1){
+    for($i=0;$i<$word.length;$i++){
+      if($g == $word[$i]){ // if correct letter
+        $('#l'+$i).text($g);
+        $check = true;
+        $guessedWordLength += 1;
+        winCheck();
+      }else{
+	    $wrongNum = 1;
+      };
+    };
+    if (!$check){
+      wrongLetter();
+    };
+  }else if($g == $word){
+    for($i=0;$i<$word.length;$i++){
+      $('#l'+$i).text($word[$i]).addClass('letterg');;
+    };
+    $guessedWordLength = $word.length;
+    winCheck();
+  }else if($g == 0){
+	  
+  }else{
+    wrongLetter();
+  };
+};
+
+function wrongLetter(){
+  $lifes -= 1;
+  $life.text($lifes);
+  $('#gp').append($g + ' ');
+  $('#life').css('color', $lifeGradient[$lifes]);
+  $check = false;
+  if($lifes == 0){
+    $('#gp').text('Game Over. Ordet var ' + $word);
+  }else{
+    $( '#inp').val('').removeAttr('checked').removeAttr('selected');
+  };
+};
+
+function winCheck(){
+  if($guessedWordLength == $word.length){ 
+    $('#life').text('Rätt svar! Ordet var ' + $word);
+  }else{
+    $( '#inp').val('').removeAttr('checked').removeAttr('selected');
+  };
+};
+
+$btn.click(function($word){
+  $g = $('#inp').val().toUpperCase();
+    if($lifes >= 1){
+      letterCheck($word);
+    };
+*/
+});
+}(window.jQuery, window, document));
+</script>-->
+</body>
+</html>

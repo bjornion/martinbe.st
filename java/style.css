@@ -1,0 +1,63 @@
+/* CSS Document */
+body{
+	background-image: url(../assets/binding_dark.png);
+	font-family: 'Poppins', sans-serif;
+	color: black;
+}
+header{
+	width: auto;
+	height: 100px;
+	background-color: white;
+	text-align: center;
+	margin: 0px;
+	padding-top: 30px;
+}
+h1{
+	background-color: white;
+	display: block;
+	margin: 0px 0px 40px 0px;
+	padding: 5px 0px 5px 0px;
+	font-size: 50px;
+}
+nav{
+	background-color: #C9C9C9;
+	border-bottom: 5px solid #FF5F00;
+	box-shadow: 5px 10px black;
+	width: 100%;
+	height: auto;
+	margin-bottom: 60px;
+	text-align: center;
+	font-size: 26px;
+	line-height: 1.4;
+}
+.nav{
+	background-color: red;
+	margin: 0px;
+	padding: 8px 10px 3px 10px;
+	display: inline-block;
+}
+.btn{
+	font-size: 20px;
+	background-color: #3FFFCC;
+}
+.container{
+	width: 1200px;
+	height: auto;
+	background-color: #7D7D7D;
+	margin: 0 auto;
+	padding-top: 1px;
+	text-align: left;
+}
+.content{
+	background-color: #8DF6FF;
+	width: 500px;
+	height: auto;
+	min-height: 50px;
+	margin: 30px;
+	display: inline-block;
+}
+.container span{
+	display: block;
+	margin: 8px;
+	font-size: 18px;
+}

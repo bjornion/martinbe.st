@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Java developement</title>
+<link rel="stylesheet" type="text/css" href="../assets/style.css">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet"> 
+<script src="jquery-3.1.1.min.js"></script>
+</head>
+<body>
+<header>
+	<span class="head_text"><h1>Javascript and jQuery development, by Martin ze Be</h1></span>
+</header>
+<div class="container">
+	<div class="content">
+		<span class="cont_text">Hej. Detta är min första line of code.</span><br>
+		<span class="btnspan"><button class="btn" id="btn">Try</button></span>
+	</div>
+</div>
+	
+<script>
+	$(document).ready(function(){
+		var $num = 4;
+		var $list = [1, 2, 3, 4];
+		var $list2 = [10, 10, 2, 10];
+		var $list3 = [4, 5, 1, 0];
+		var $sum = 0;
+		var $ihop = 0;
+		var $ihops = 0;
+		var $i = 0;
+		$('#btn').click(function(){
+			$('.btnspan').after('<span class="cont_text">Test 1, svar: ' + $num + '</span>');
+			for(var i=0; i<$list.length; i++){
+				$sum += $list[i];
+				$asum = $sum;
+			};
+			for(var i=0; i<$list2.length; i++){
+				$sum += $list2[i];
+				$bsum = $sum - $asum;
+			};
+			
+			$('.btnspan').after('<span class="cont_text">Test 2, svar: <br>Summa 1: '+$asum+', <br>summa 2: '+$bsum+'. <br>Summa 3: ' + $sum + '</span>');
+			$sum = 0;
+			var $len = 0;
+			if($list.length>$list2.length){
+				$len = $list.length;
+			}else if($list.length<$list2.length){
+				$len = $list2.length;
+			}else{$len=$list.length;};
+			i = 0;
+			while(i<$len){
+				$sum = $list2[i]-$list[i];
+				$('.btnspan').after('<span class="cont_text">Test 3, svar: '+$list2[i]+'-'+$list[i]+'='+$sum+'</span>');
+				i++;
+			};
+			
+			for(var i=0;i<$len;i++){
+				if($list[i]<$list2[i]){
+					if($list[i]<$list3[i]){
+						$('.btnspan').after('<span class="cont_text">Test 4, svar: Lägst är 1: '+$list[i]+'</span>');
+					}else{
+						$('.btnspan').after('<span class="cont_text">Test 4, svar: Lägst är 3: '+$list3[i]+'</span>');
+					};
+					
+				}else if($list2[i]<$list3[i]){
+					$('.btnspan').after('<span class="cont_text">Test 4, svar: Lägst är 2: '+$list2[i]+'</span>');
+				}else{
+					$('.btnspan').after('<span class="cont_text">Test 4, svar: Lägst är 3: '+$list3[i]+'</span>');
+				};
+			};
+		});
+	});
+</script>
+</body>
+</html>

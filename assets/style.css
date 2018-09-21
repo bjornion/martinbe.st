@@ -1,0 +1,149 @@
+  /* Main CSS Document */
+  /* CSS Reset */
+  html, body, div, span, applet, object, iframe,
+  h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+  a, abbr, acronym, address, big, cite, code,
+  del, dfn, em, img, ins, kbd, q, s, samp,
+  small, strike, strong, sub, sup, tt, var,
+  b, u, i, center,
+  dl, dt, dd, ol, ul, li,
+  fieldset, form, label, legend,
+  table, caption, tbody, tfoot, thead, tr, th, td,
+  article, aside, canvas, details, embed, 
+  figure, figcaption, footer, header, hgroup, 
+  menu, nav, output, ruby, section, summary,
+  time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+  }
+  html{
+    box-sizing: border-box;
+  }
+  *, *:before, *:after{
+    box-sizing: border-box;
+  }
+  /* HTML5 display-role reset for older browsers */
+  article, aside, details, figcaption, figure, 
+  footer, header, hgroup, menu, nav, section {
+    display: block;
+  }
+  ol, ul {
+    list-style: none;
+  }
+  blockquote, q {
+    quotes: none;
+  }
+  blockquote:before, blockquote:after,
+  q:before, q:after {
+    content: '';
+    content: none;
+  }
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+
+/* CSS Styling */
+body{
+  background-image: url(lodyas.png);
+  background-repeat: repeat;
+  font-family: Ubuntu, sans-serif;
+  font-size: 1em;
+  line-height: 1.2;
+}
+
+header{
+  padding: 1em;
+  padding-left: 1.4em;
+	background-color: #212121;
+  /*align-items: center;  */
+  display: flex;
+  position: relative;
+  color: white;
+}
+
+header::after{
+  border-bottom: 5px solid rgba(255,142,0,1.00);
+  content: "";
+  left: 0;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+}
+
+nav{
+  width: auto;
+  height: auto;
+  float: left;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding-top: 2em;
+  /*background-color: grey;*/
+}
+
+.fa-3x{
+  color: white;
+}
+
+i{
+  color: black; /* ??? */
+}
+
+nav:i{
+  /*font-size: 5em;*/
+  color: black;
+}
+
+a, a:visited{
+  text-decoration: none;
+  color: black;
+}
+
+li{
+  min-width: 6em;
+  margin-top: 0.5em;
+  border-top-right-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
+  padding: 1em;
+  align-items: center;
+  vertical-align: center;
+  background-color: white;
+}
+
+.moveOut{
+  border-right: 5px rgba(255,142,0,1.00) solid;
+}
+
+h1{
+  display: inline-block;
+  font-size: 3em;
+  padding-left: 0.4em;
+  color: white;  
+}
+
+#header_logo{
+  float: left;
+}
+.ffa{
+  color: #CD0205;
+}
+
+.h1o{
+  display: inline-block;
+  font-weight: 700;
+  color: rgba(255,142,0,1.00);
+}
+
+article{
+  margin: 0 auto;
+  padding: 2em;
+  width: 60em;
+  height: 70em;
+  background-color: white;
+}

@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Namnlöst dokument</title>
+<script src="jquery-3.1.1.min.js"></script>
+</head>
+
+<body>
+<p id="t0">te</p>
+<p id="t1">te</p>
+<p id="t2">te</p>
+<button id="btn">GO</button>
+<script>
+(function($, window, document){
+$(function(){
+var $text = $('#t1');
+var $word = '';
+var $rwn = '';
+$('#btn').click(function(){
+	$.get("text.txt", function(data){
+		setWord(data);
+	}, "text");
+});
+
+function setWord(data){
+	$rwn = data.split('\n');
+	$text.text($rwn[1]);
+};
+});
+}(window.jQuery, window, document));
+
+</script>
+</body>
+</html>

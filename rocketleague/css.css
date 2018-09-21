@@ -1,0 +1,14 @@
+body,
+html {
+    margin: 0 auto;
+    font-family: verdana;
+}
+
+img {
+    width: 64px;
+    height: 64px;
+}
+
+table td{
+    width: 100px;
+}
